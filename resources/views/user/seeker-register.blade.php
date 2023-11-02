@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <h1>Looking for a job?</h1>
             <h3>Please create an account</h3>
-            <img src="{{ asset('image/clickhere.png')}}" alt="signup">
+            <img src="{{ asset(''image/clickhere.png'')}}" alt="signup">
         </div>
 
         <div class="col-md-6">
