@@ -14,7 +14,7 @@ Route::get('/register/seeker', [UserController::class, 'createSeeker'])->name('c
 Route::post('/register/seeker', [UserController::class, 'storeSeeker'])->name('store.seeker');
 
 // login Routes
-Route::get('/login', [UserController::class, 'Login'])->name('user.login');
+Route::get('/login', [UserController::class, 'Login'])->name('login');
 Route::post('/login', [UserController::class, 'postLogin'])->name('post.login');
 
 // logout routes

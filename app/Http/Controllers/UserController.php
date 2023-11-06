@@ -58,6 +58,6 @@ class UserController extends Controller
    public function Logout()
    {
       auth()->logout();
-      return redirect()->route('user.login');
+      return redirect()->route('login');
    }
 }
