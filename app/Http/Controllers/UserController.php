@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SeekerRegistrationRequest;
+use App\Http\Requests\RegistrationFormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,16 +11,17 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
    const JOB_SEEKER =  'seeker';
+   const JOB_POSTER = 'employer';
 
    public function createSeeker()
    {
     return view('user.seeker-register');
    }
 
-   public function storeSeeker(SeekerRegistrationRequest $request)
+   public function storeSeeker(RegistrationFormRequest $request)
    {
       // validating the entries
-      // linked with the seekerrequestfile
+      // linked with the RegistrationFormRequest
       User::create([
          'name' => request('name'),
          'email' => request('email'),
@@ -60,4 +61,26 @@ class UserController extends Controller
       auth()->logout();
       return redirect()->route('login');
    }
+
+   // Employer Registration
+   public function createEmployer()
+   {
+      return view('user.employer-register');
+   }
+
+   public function storeEmployer(RegistrationFormRequest $request)
+   {
+   // validating the entries
+   // linked with the seekerrequestfile
+   User::create([
+   'name' => request('name'),
+   'email' => request('email'),
+   'password' => bcrypt(request('password')),
+   'user_type' => self::JOB_POSTER
+   ]);
+
+   return redirect()->route('login');
+   }
+     
+  
 }
