@@ -22,14 +22,16 @@ class UserController extends Controller
    {
       // validating the entries
       // linked with the RegistrationFormRequest
-      User::create([
+      $user = User::create([
          'name' => request('name'),
          'email' => request('email'),
          'password' => bcrypt(request('password')),
          'user_type' => self::JOB_SEEKER,
       ]);
 
-         return redirect()->route('login')->with('successMessage','Your account has been created successfully');
+      $user->sendEmailVerificationNotification();
+
+      return redirect()->route('login')->with('successMessage','Your account has been created successfully');
 
    }
 
@@ -73,7 +75,7 @@ class UserController extends Controller
    {
       // validating the entries
       // linked with the seekerrequestfile
-      User::create([
+      $user = User::create([
       'name' => request('name'),
       'email' => request('email'),
       'password' => bcrypt(request('password')),
@@ -81,8 +83,10 @@ class UserController extends Controller
       'user_trial' => now()->addWeek()
 
       ]);
+      $user->sendEmailVerificationNotification();
 
-   return redirect()->route('login')->with('successMessage','Your account has been created successfully');
+
+      return redirect()->route('login')->with('successMessage','Your account has been created successfully');
    }
      
   
