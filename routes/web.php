@@ -15,7 +15,7 @@ Route::get('/', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 $request->fulfill();
 
-return redirect('/dashboard');
+return redirect('/login');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // register routes
