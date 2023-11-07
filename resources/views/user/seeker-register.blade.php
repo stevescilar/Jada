@@ -55,7 +55,7 @@
         document.getElementById("btnRegister").addEventListener("click", function(event) {
             var form = document.getElementById("registrationForm");
             var card = document.getElementById('card')
-            var messageDiv = doucment.getElementById('message')
+            var messageDiv = document.getElementById('message')
             messageDiv.innerHTML = ''
             var formData = new FormData(form)
 
