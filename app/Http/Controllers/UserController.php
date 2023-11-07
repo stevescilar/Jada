@@ -33,7 +33,9 @@ class UserController extends Controller
 
       $user->sendEmailVerificationNotification();
 
-      return redirect()->route('verification.notice')->with('successMessage','Your account has been created successfully');
+      return response()->json('success');
+
+      // return redirect()->route('verification.notice')->with('successMessage','Your account has been created successfully');
 
    }
 
@@ -89,8 +91,8 @@ class UserController extends Controller
       Auth::login($user);
       $user->sendEmailVerificationNotification();
 
-
-      return redirect()->route('verification.notice')->with('successMessage','Your account has been created successfully, Please check your email for verification link');
+      return response()->json('success');
+      // return redirect()->route('verification.notice')->with('successMessage','Your account has been created successfully, Please check your email for verification link');
    }
      
   
