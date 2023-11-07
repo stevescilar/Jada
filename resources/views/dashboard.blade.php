@@ -2,33 +2,37 @@
 
 @section('content')
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            Hello, {{ auth()->user()->name }}
-            <p>Your trial ends on <strong>{{ auth()->user()->user_trial }}</strong> </p>
 
-            <div class="col-md-3">
-                <div class="card-counter primary">
+        Hello, {{ auth()->user()->name }}
+
+        @if (Auth::check() && auth()->user()->user_type == 'employer')
+            <p>Your trial ends on <strong>{{ auth()->user()->user_trial }}</strong> </p>
+        @endif
+
+        <div class="row justify-content-center">
+            <div class="col-md-3 ">
+                <div class="card-counter primary shadow-lg">
                     <p class="text-center mt-3 lead">User Profile</p>
                     <button class="btn btn-primary float-end">View</button>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="card-counter danger">
+                <div class="card-counter danger shadow-lg">
                     <p class="text-center mt-3 lead">Post Job</p>
                     <button class="btn btn-primary float-end">View</button>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="card-counter success">
+                <div class="card-counter success shadow-lg">
                     <p class="text-center mt-3 lead">Job Listings</p>
                     <button class="btn btn-primary float-end">View</button>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="card-counter info">
+                <div class="card-counter info shadow-lg">
                     <p class="text-center mt-3 lead">Item 4</p>
                     <button class="btn btn-primary float-end">View</button>
                 </div>
@@ -37,30 +41,34 @@
     </div>
 
     <style>
-    .card-counter {
-        box-shadow: 2px 2px 10px #DADADA;
-        margin: 5px;
-        padding: 20px 10px;
-        background-color: #fff;
-        height: 130px;
-        border-radius: 5px;
-        transition: .3s linear all;
-    }
-    .card-counter.primary {
-        background-color: #007bff;
-        color: #FFF;
-    }
-    .card-counter.danger {
-        background-color: #ef5350;
-        color: #FFF;
-    }
-    .card-counter.success {
-        background-color: #66bb6a;
-        color: #FFF;
-    }
-    .card-counter.info {
-        background-color: #26c6da;
-        color: #FFF;
-    }
-</style>
+        .card-counter {
+            box-shadow: 2px 2px 10px #DADADA;
+            margin: 5px;
+            padding: 20px 10px;
+            background-color: #fff;
+            height: 130px;
+            border-radius: 5px;
+            transition: .3s linear all;
+        }
+
+        .card-counter.primary {
+            background-color: #007bff;
+            color: #FFF;
+        }
+
+        .card-counter.danger {
+            background-color: #ef5350;
+            color: #FFF;
+        }
+
+        .card-counter.success {
+            background-color: #66bb6a;
+            color: #FFF;
+        }
+
+        .card-counter.info {
+            background-color: #26c6da;
+            color: #FFF;
+        }
+    </style>
 @endsection
