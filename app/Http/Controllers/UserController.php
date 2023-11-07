@@ -29,9 +29,11 @@ class UserController extends Controller
          'user_type' => self::JOB_SEEKER,
       ]);
 
+      Auth::login($user);
+
       $user->sendEmailVerificationNotification();
 
-      return redirect()->route('login')->with('successMessage','Your account has been created successfully');
+      return redirect()->route('verification.notice')->with('successMessage','Your account has been created successfully');
 
    }
 
@@ -83,10 +85,12 @@ class UserController extends Controller
       'user_trial' => now()->addWeek()
 
       ]);
+
+      Auth::login($user);
       $user->sendEmailVerificationNotification();
 
 
-      return redirect()->route('login')->with('successMessage','Your account has been created successfully');
+      return redirect()->route('verification.notice')->with('successMessage','Your account has been created successfully, Please check your email for verification link');
    }
      
   
