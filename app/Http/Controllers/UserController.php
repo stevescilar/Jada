@@ -29,7 +29,8 @@ class UserController extends Controller
          'user_type' => self::JOB_SEEKER
       ]);
 
-      return redirect()->route('user.login');
+         return redirect()->route('login')->with('successMessage','Your account has been created successfully');
+
    }
 
    public function Login()
@@ -70,16 +71,16 @@ class UserController extends Controller
 
    public function storeEmployer(RegistrationFormRequest $request)
    {
-   // validating the entries
-   // linked with the seekerrequestfile
-   User::create([
-   'name' => request('name'),
-   'email' => request('email'),
-   'password' => bcrypt(request('password')),
-   'user_type' => self::JOB_POSTER
-   ]);
+      // validating the entries
+      // linked with the seekerrequestfile
+      User::create([
+      'name' => request('name'),
+      'email' => request('email'),
+      'password' => bcrypt(request('password')),
+      'user_type' => self::JOB_POSTER
+      ]);
 
-   return redirect()->route('login');
+   return redirect()->route('login')->with('successMessage','Your account has been created successfully');
    }
      
   
