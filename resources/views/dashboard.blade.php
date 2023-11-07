@@ -6,7 +6,8 @@
         Hello, {{ auth()->user()->name }}
 
         @if (Auth::check() && auth()->user()->user_type == 'employer')
-            <p>Your trial ends on <strong>{{ auth()->user()->user_trial }}</strong> </p>
+            <p>Your trial {{ now()->format('Y-m-d') > auth()->user()->user_trial ? 'Expired' : 'Will Expire ' }} on
+                <strong>{{ auth()->user()->user_trial }}</strong> </p>
         @endif
 
         <div class="row justify-content-center">
