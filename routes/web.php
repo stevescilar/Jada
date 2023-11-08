@@ -45,10 +45,8 @@ Route::get('subscribe', [SubscriptionController::class, 'subscribe']);
 Route::get('pay/ppid', [SubscriptionController::class, 'initiatePayment'])->name('pay.ppid');
 Route::get('pay/weekly', [SubscriptionController::class, 'initiatePayment'])->name('pay.weekly');
 Route::get('pay/monthly', [SubscriptionController::class, 'initiatePayment'])->name('pay.monthly');
-
-Route::get('payment/success', [SubscriptionController::class, 'paymentSuccess'])->name('payment.success')->middleware('auth');
-Route::get('payment/cancel', [SubscriptionController::class,
-'cancel'])->name('payment.cancel')->middleware('auth');
+Route::get('payment/success', [SubscriptionController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('payment/cancel', [SubscriptionController::class,'cancel'])->name('payment.cancel');
 
 
 
