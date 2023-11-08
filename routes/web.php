@@ -38,3 +38,5 @@ Route::get('/verify',[DashboardController::class, 'verify'])->name('verification
 
 
 Route::get('/resend/verification/email', [DashboardController::class, 'resend'])->name('resend.email');
+
+Route::get('/subscribe', [SubscriptionController::class, 'subscribe'])->middleware('auth');
