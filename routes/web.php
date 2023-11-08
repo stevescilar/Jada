@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 // use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
@@ -39,4 +40,7 @@ Route::get('/verify',[DashboardController::class, 'verify'])->name('verification
 
 Route::get('/resend/verification/email', [DashboardController::class, 'resend'])->name('resend.email');
 
-Route::get('/subscribe', [SubscriptionController::class, 'subscribe'])->middleware('auth');
+Route::get('subscribe', [SubscriptionController::class, 'subscribe'])->middleware('auth');
+Route::get('pay/ppid', [SubscriptionController::class, 'initiatePayment'])->name('pay.ppid')->middleware('auth');
+Route::get('pay/weekly', [SubscriptionController::class, 'initiatePayment'])->name('pay.weekly')->middleware('auth');
+Route::get('pay/monthly', [SubscriptionController::class, 'initiatePayment'])->name('pay.monthly')->middleware('auth');
