@@ -54,6 +54,8 @@ class SubscriptionController extends Controller
             ]
          ];
         // initiate payments
+
+        Mpesa::setApiKey(config('services.mpesa.secret'));
         try {
 
         } catch(\Exception $e) {
